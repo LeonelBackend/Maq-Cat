@@ -1,56 +1,75 @@
-# Welcome to your Expo app 👋
+# 🚜 MAQ-CAT - App Móvil de Maquinaria Pesada
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicación móvil híbrida para la consulta y visualización de maquinaria pesada industrial estilo **Caterpillar** (Modo Oscuro, Amarillo Caterpillar `#FFCD00`, contenedores metalizados y especificaciones técnicas de alta precisión).
 
-## Get started
+Desarrollada en **React Native + Expo Router**, 100% offline y estática.
 
-1. Install dependencies
+---
 
+## 📱 Pantallas Implementadas
+
+1. **Inicio (Hero Screen - "THE POWER HYDRA")**:
+   - Cabecera con logo central **MAQ-CAT**.
+   - Imagen Hero de excavadora en mina con iluminación dramática.
+   - Título principal **"THE POWER HYDRA"** y subtítulo.
+   - Botón CTA **"EXPLORAR CATÁLOGO"**.
+   - Insignia de telemetría `SYS.OP.1`.
+
+2. **Catálogo de Maquinaria**:
+   - Listado de 4 tarjetas verticales con fotos, modelo destacado, especificaciones rápidas y botón **"VER DETALLES"**:
+     - **EXCAVADORAS**: Cat 390F L
+     - **CARGADORES FRONTALES**: Cat 988K
+     - **MOTONIVELADORAS**: Cat 14M
+     - **CAMIONES MINEROS**: Cat 797F
+
+3. **Detalle de Producto (Doblaje Dinámico para las 4 Máquinas)**:
+   - Banner superior con foto y etiqueta de categoría (*TRANSPORTE PESADO*, *EXCAVACIÓN PESADA*, etc.).
+   - Módulos de especificaciones técnicas: **Módulo de Potencia** (Motor), **Rendimiento Bruto** (HP/kW) y **Carga Útil / Peso Operativo**.
+   - Sección de **Resumen Operativo** detallando características del chasis y resistencia.
+   - Selector inferior para navegar entre las 4 máquinas al instante.
+
+4. **Información & Descargas**:
+   - Insignia y logo institucional **MAQ-CAT**.
+   - Sección **"Acerca de la App"** con versión `v2.4.0 (Stable)` y fecha de actualización.
+   - Botón amarillo destacado **"DESCARGAR AHORA"** y enlaces a **Google Play** y **App Store**.
+
+---
+
+## 🚀 Cómo Ejecutar la Aplicación
+
+### Requisitos Previos:
+- Node.js 18+
+- Aplicación **Expo Go** instalada en tu teléfono (iOS o Android).
+
+### Pasos:
+
+1. **Instalar dependencias**:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+2. **Iniciar el servidor de desarrollo Expo**:
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+3. **Ver la app en tu teléfono**:
+   - Abre la cámara (iOS) o la app **Expo Go** (Android) y escanea el código QR mostrado en la terminal.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+4. **Ver en la Web**:
+   ```bash
+   npm run web
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
-
-When you're ready, run:
+## 🐙 Subir el Proyecto a GitHub
 
 ```bash
-npm run reset-project
+git init
+git add .
+git commit -m "feat: MAQ-CAT React Native Expo app with 4 screens"
+git branch -M main
+git remote add origin https://github.com/TU_USUARIO/maq-cat.git
+git push -u origin main
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
