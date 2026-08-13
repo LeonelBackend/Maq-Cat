@@ -12,13 +12,16 @@ export const MachineCard: React.FC<MachineCardProps> = ({
   machine,
   onPressDetails,
 }) => {
+  const imageSource = typeof machine.imageUrl === 'string' ? { uri: machine.imageUrl } : machine.imageUrl;
+  const isRequireImage = typeof machine.imageUrl !== 'string';
+
   return (
     <View style={styles.cardContainer}>
-      <View style={styles.imageWrapper}>
+      <View style={[styles.imageWrapper, isRequireImage && styles.whiteBgWrapper]}>
         <Image
-          source={{ uri: machine.imageUrl }}
+          source={imageSource}
           style={styles.image}
-          resizeMode="cover"
+          resizeMode={isRequireImage ? 'contain' : 'cover'}
         />
         {machine.isFeatured && (
           <View style={styles.featuredTag}>
@@ -79,8 +82,13 @@ const styles = StyleSheet.create({
   imageWrapper: {
     height: 180,
     width: '100%',
+    backgroundColor: Colors.navBackground,
+    overflow: 'hidden',
     position: 'relative',
-    backgroundColor: '#000',
+  },
+  whiteBgWrapper: {
+    backgroundColor: '#FFFFFF',
+    padding: 6,
   },
   image: {
     width: '100%',

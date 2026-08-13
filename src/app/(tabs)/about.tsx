@@ -6,31 +6,12 @@ import {
   ScrollView,
   SafeAreaView,
   StatusBar,
-  TouchableOpacity,
-  Linking,
-  Alert,
 } from 'react-native';
 import { Colors } from '../../constants/theme';
 import { IndustrialHeader } from '../../components/IndustrialHeader';
-import { Info, Download, ShieldCheck, Cpu } from 'lucide-react-native';
+import { Info, ShieldCheck, Cpu } from 'lucide-react-native';
 
 export default function AboutScreen() {
-  const handleDownload = () => {
-    Alert.alert(
-      'Descarga MAQ-CAT Mobile',
-      'La aplicación se encuentra lista para sincronizarse en dispositivos iOS y Android.',
-      [{ text: 'ENTENDIDO', style: 'default' }]
-    );
-  };
-
-  const openStore = (storeName: string) => {
-    Alert.alert(
-      `Accediendo a ${storeName}`,
-      `Redirigiendo a la tienda oficial de aplicaciones...`,
-      [{ text: 'OK' }]
-    );
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={Colors.navBackground} />
@@ -58,23 +39,21 @@ export default function AboutScreen() {
         {/* Card: Acerca de la App */}
         <View style={styles.infoCard}>
           <View style={styles.cardHeaderRow}>
-            <Info color={Colors.primaryYellow} size={20} />
-            <Text style={styles.cardTitle}>Acerca de la App</Text>
+            <Info color={Colors.primaryYellow} size={22} />
+            <Text style={styles.cardTitle}>ACERCA DE LA APP</Text>
           </View>
 
           <Text style={styles.descriptionText}>
             MAQ-CAT es la plataforma definitiva para la gestión, mantenimiento y supervisión
-            de maquinaria pesada. Diseñada para operar en entornos de alta exigencia, proporciona
-            datos telemétricos en tiempo real, manuales técnicos de precisión y protocolos de
-            seguridad críticos para operadores y jefes de flota.
+            técnica de maquinaria pesada Caterpillar en proyectos de construcción y gran minería.
+            Acceda a catálogos detallados y fichas de rendimiento.
           </Text>
 
           {/* Metrics Grid */}
           <View style={styles.metricsGrid}>
             <View style={styles.metricBox}>
-              <Cpu color={Colors.textSecondary} size={18} style={{ marginBottom: 6 }} />
               <Text style={styles.metricLabel}>VERSIÓN</Text>
-              <Text style={styles.metricValue}>v2.4.0 (Stable)</Text>
+              <Text style={styles.metricValue}>v2.4.0 (Industrial)</Text>
             </View>
 
             <View style={styles.metricBox}>
@@ -83,41 +62,6 @@ export default function AboutScreen() {
               <Text style={styles.metricValue}>24 de oct. de 2023</Text>
             </View>
           </View>
-        </View>
-
-        {/* Action: Big Yellow Download Button */}
-        <TouchableOpacity
-          style={styles.downloadButton}
-          activeOpacity={0.85}
-          onPress={handleDownload}
-        >
-          <Download color="#000000" size={24} style={{ marginRight: 10 }} />
-          <Text style={styles.downloadButtonText}>DESCARGAR AHORA</Text>
-        </TouchableOpacity>
-
-        {/* Store Links */}
-        <View style={styles.storesRow}>
-          <TouchableOpacity
-            style={styles.storeBtn}
-            onPress={() => openStore('Google Play')}
-          >
-            <Text style={styles.storeSubtext}>CONSÍGUELO EN</Text>
-            <Text style={styles.storeMaintext}>Google Play</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.storeBtn}
-            onPress={() => openStore('App Store')}
-          >
-            <Text style={styles.storeSubtext}>CONSÍGUELO EN</Text>
-            <Text style={styles.storeMaintext}>App Store</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.footerNote}>
-          <Text style={styles.footerText}>
-            © 2026 MAQ-CAT INDUSTRIAL. TODOS LOS DERECHOS RESERVADOS.
-          </Text>
         </View>
 
       </ScrollView>
@@ -134,9 +78,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
+    flexGrow: 1,
+    justifyContent: 'center',
     paddingHorizontal: 20,
-    paddingTop: 24,
-    paddingBottom: 40,
+    paddingTop: 40,
+    paddingBottom: 50,
   },
   brandHeroCard: {
     backgroundColor: Colors.cardBackground,
@@ -164,6 +110,7 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: 2,
     marginBottom: 4,
+    textAlign: 'center',
   },
   brandSubtitle: {
     color: Colors.primaryYellow,
@@ -171,6 +118,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: 1.5,
     marginBottom: 16,
+    textAlign: 'center',
   },
   statusPill: {
     flexDirection: 'row',
@@ -194,6 +142,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: '700',
     letterSpacing: 1,
+    textAlign: 'center',
   },
   infoCard: {
     backgroundColor: Colors.cardBackground,
@@ -202,10 +151,12 @@ const styles = StyleSheet.create({
     borderColor: Colors.cardBorder,
     padding: 20,
     marginBottom: 24,
+    alignItems: 'center',
   },
   cardHeaderRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: 14,
   },
   cardTitle: {
@@ -214,16 +165,19 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     marginLeft: 10,
     letterSpacing: 0.5,
+    textAlign: 'center',
   },
   descriptionText: {
     color: Colors.textSecondary,
     fontSize: 13,
     lineHeight: 21,
     marginBottom: 20,
+    textAlign: 'center',
   },
   metricsGrid: {
     flexDirection: 'row',
     gap: 12,
+    width: '100%',
   },
   metricBox: {
     flex: 1,
@@ -232,6 +186,8 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     borderWidth: 1,
     borderColor: Colors.cardBorder,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   metricLabel: {
     color: Colors.textMuted,
@@ -239,67 +195,12 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: 1,
     marginBottom: 4,
+    textAlign: 'center',
   },
   metricValue: {
     color: Colors.textPrimary,
     fontSize: 13,
     fontWeight: '700',
-  },
-  downloadButton: {
-    backgroundColor: Colors.primaryYellow,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 18,
-    borderRadius: 2,
-    marginBottom: 20,
-    elevation: 4,
-    shadowColor: Colors.primaryYellow,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 6,
-  },
-  downloadButtonText: {
-    color: '#000000',
-    fontSize: 16,
-    fontWeight: '900',
-    letterSpacing: 2,
-  },
-  storesRow: {
-    flexDirection: 'row',
-    gap: 12,
-    marginBottom: 32,
-  },
-  storeBtn: {
-    flex: 1,
-    backgroundColor: Colors.cardBackground,
-    paddingVertical: 14,
-    paddingHorizontal: 12,
-    borderRadius: 2,
-    borderWidth: 1,
-    borderColor: Colors.cardBorder,
-    alignItems: 'center',
-  },
-  storeSubtext: {
-    color: Colors.textMuted,
-    fontSize: 9,
-    fontWeight: '800',
-    letterSpacing: 1,
-    marginBottom: 2,
-  },
-  storeMaintext: {
-    color: Colors.textPrimary,
-    fontSize: 14,
-    fontWeight: '800',
-  },
-  footerNote: {
-    alignItems: 'center',
-    paddingVertical: 10,
-  },
-  footerText: {
-    color: Colors.textMuted,
-    fontSize: 10,
-    fontWeight: '600',
-    letterSpacing: 1,
+    textAlign: 'center',
   },
 });

@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors } from '../constants/theme';
-import { Menu, ShieldCheck } from 'lucide-react-native';
 
 interface IndustrialHeaderProps {
   showBack?: boolean;
@@ -14,39 +13,32 @@ export const IndustrialHeader: React.FC<IndustrialHeaderProps> = ({
   onBackPress,
   title,
 }) => {
+  if (!showBack && !title) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
-        {showBack ? (
+        {showBack && (
           <TouchableOpacity style={styles.iconBtn} onPress={onBackPress}>
             <Text style={styles.backArrow}>←</Text>
           </TouchableOpacity>
-        ) : (
-          <View style={styles.menuIconContainer}>
-            <Menu color={Colors.textSecondary} size={22} />
-          </View>
         )}
       </View>
 
-      <View style={styles.logoContainer}>
-        <View style={styles.logoBadge}>
-          <Text style={styles.logoText}>MAQ</Text>
-          <Text style={styles.logoTextYellow}>-CAT</Text>
-        </View>
+      <View style={styles.titleContainer}>
+        {title ? <Text style={styles.headerTitle}>{title}</Text> : null}
       </View>
 
-      <View style={styles.rightContainer}>
-        <View style={styles.shieldIconContainer}>
-          <ShieldCheck color={Colors.primaryYellow} size={20} />
-        </View>
-      </View>
+      <View style={styles.rightContainer} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: 60,
+    height: 54,
     backgroundColor: Colors.navBackground,
     flexDirection: 'row',
     alignItems: 'center',
@@ -59,9 +51,6 @@ const styles = StyleSheet.create({
     width: 40,
     alignItems: 'flex-start',
   },
-  menuIconContainer: {
-    padding: 4,
-  },
   iconBtn: {
     padding: 6,
   },
@@ -70,40 +59,20 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  logoContainer: {
+  titleContainer: {
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
-  logoBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#000000',
-    paddingHorizontal: 12,
-    paddingVertical: 5,
-    borderRadius: 2,
-    borderWidth: 1,
-    borderColor: Colors.cardBorderHighlight,
-  },
-  logoText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: '900',
-    letterSpacing: 2,
-  },
-  logoTextYellow: {
-    color: Colors.primaryYellow,
-    fontSize: 16,
-    fontWeight: '900',
-    letterSpacing: 2,
+  headerTitle: {
+    color: Colors.textPrimary,
+    fontSize: 14,
+    fontWeight: '700',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
   },
   rightContainer: {
     width: 40,
     alignItems: 'flex-end',
-  },
-  shieldIconContainer: {
-    backgroundColor: 'rgba(255, 205, 0, 0.1)',
-    padding: 6,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: 'rgba(255, 205, 0, 0.3)',
   },
 });

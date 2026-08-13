@@ -7,11 +7,12 @@ import {
   TouchableOpacity,
   SafeAreaView,
   StatusBar,
+  Image,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Colors } from '../../constants/theme';
 import { IndustrialHeader } from '../../components/IndustrialHeader';
-import { ArrowRight, Activity } from 'lucide-react-native';
+import { ArrowRight } from 'lucide-react-native';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -26,22 +27,29 @@ export default function HomeScreen() {
       <IndustrialHeader />
 
       <ImageBackground
-        source={{
-          uri: 'https://images.unsplash.com/photo-1579412690850-bd41cd0af397?q=80&w=1200&auto=format&fit=crop',
-        }}
+        source={require('../../../assets/images/hero-cat-shovel.png')}
         style={styles.heroBackground}
-        resizeMode="cover"
+        imageStyle={styles.backgroundImageStyle}
+        resizeMode="contain"
       >
         {/* Dark gradient overlay */}
         <View style={styles.overlay}>
           <View style={styles.contentContainer}>
             
-            {/* Title Section */}
+            {/* Title Section (Logo al centro arriba de THE POWER HYDRA) */}
             <View style={styles.titleWrapper}>
+              <View style={styles.heroLogoBadge}>
+                <Image
+                  source={require('../../../assets/images/logo-maq-cat.png')}
+                  style={styles.heroLogoImage}
+                  resizeMode="contain"
+                />
+              </View>
+
               <Text style={styles.mainTitle}>THE POWER HYDRA</Text>
               <Text style={styles.subtitle}>
-                Equipos pesados de última generación para los terrenos más exigentes.
-                Precisión, fuerza y rendimiento industrial.
+                Equipos pesados Caterpillar de última generación para los terrenos más exigentes.
+                Precisión, fuerza y rendimiento industrial, construcción y gran mineria .
               </Text>
             </View>
 
@@ -54,14 +62,6 @@ export default function HomeScreen() {
               <Text style={styles.ctaText}>EXPLORAR CATÁLOGO</Text>
               <ArrowRight color="#000000" size={20} style={{ marginLeft: 8 }} />
             </TouchableOpacity>
-
-            {/* Telemetry Status Bar */}
-            <View style={styles.statusFooter}>
-              <View style={styles.telemetryBadge}>
-                <Activity color={Colors.primaryYellow} size={14} />
-                <Text style={styles.telemetryText}>SYS.OP.1 // TELEMETRÍA ACTIVA</Text>
-              </View>
-            </View>
 
           </View>
         </View>
@@ -78,18 +78,43 @@ const styles = StyleSheet.create({
   heroBackground: {
     flex: 1,
     width: '100%',
+    backgroundColor: '#0F0F12',
+  },
+  backgroundImageStyle: {
+    opacity: 0.88,
   },
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(13, 13, 15, 0.68)',
-    justifyContent: 'flex-end',
+    backgroundColor: 'rgba(13, 13, 15, 0.35)',
   },
   contentContainer: {
+    flex: 1,
     paddingHorizontal: 24,
+    paddingTop: 36,
     paddingBottom: 40,
+    justifyContent: 'space-between',
   },
   titleWrapper: {
-    marginBottom: 32,
+    marginTop: 12,
+    alignItems: 'center',
+  },
+  heroLogoBadge: {
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderRadius: 6,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: Colors.primaryYellow,
+    shadowColor: Colors.primaryYellow,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.35,
+    shadowRadius: 8,
+    elevation: 6,
+  },
+  heroLogoImage: {
+    width: 170,
+    height: 38,
   },
   mainTitle: {
     color: Colors.primaryYellow,
@@ -98,7 +123,8 @@ const styles = StyleSheet.create({
     lineHeight: 42,
     letterSpacing: 1.5,
     textTransform: 'uppercase',
-    marginBottom: 16,
+    marginBottom: 14,
+    textAlign: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.9)',
     textShadowOffset: { width: 0, height: 2 },
     textShadowRadius: 6,
@@ -109,6 +135,7 @@ const styles = StyleSheet.create({
     lineHeight: 23,
     fontWeight: '500',
     opacity: 0.9,
+    textAlign: 'center',
   },
   ctaButton: {
     backgroundColor: Colors.primaryYellow,
@@ -117,7 +144,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 16,
     borderRadius: 2,
-    marginBottom: 32,
     elevation: 4,
     shadowColor: Colors.primaryYellow,
     shadowOffset: { width: 0, height: 4 },
@@ -129,26 +155,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '900',
     letterSpacing: 2,
-  },
-  statusFooter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  telemetryBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(22, 22, 26, 0.85)',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 2,
-    borderWidth: 1,
-    borderColor: Colors.cardBorder,
-  },
-  telemetryText: {
-    color: Colors.textSecondary,
-    fontSize: 10,
-    fontWeight: '700',
-    letterSpacing: 1,
-    marginLeft: 6,
   },
 });

@@ -37,16 +37,22 @@ export default function DetailScreen() {
         showsVerticalScrollIndicator={false}
       >
         {/* Top Machinery Banner */}
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: machine.imageUrl }}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <View style={styles.categoryTag}>
-            <Text style={styles.categoryTagText}>{machine.categoryTag}</Text>
-          </View>
-        </View>
+        {(() => {
+          const imageSource = typeof machine.imageUrl === 'string' ? { uri: machine.imageUrl } : machine.imageUrl;
+          const isRequireImage = typeof machine.imageUrl !== 'string';
+          return (
+            <View style={[styles.imageContainer, isRequireImage && styles.whiteBgContainer]}>
+              <Image
+                source={imageSource}
+                style={styles.image}
+                resizeMode={isRequireImage ? 'contain' : 'cover'}
+              />
+              <View style={styles.categoryTag}>
+                <Text style={styles.categoryTagText}>{machine.categoryTag}</Text>
+              </View>
+            </View>
+          );
+        })()}
 
         {/* Title and Model Header */}
         <View style={styles.titleRow}>
@@ -86,7 +92,7 @@ export default function DetailScreen() {
         <SpecBlock
           type="payload"
           label={
-            machine.slug === 'camiones-mineros'
+            machine.slug === 'camión-mineros'
               ? 'CARGA ÚTIL NOMINAL'
               : 'PESO OPERATIVO'
           }

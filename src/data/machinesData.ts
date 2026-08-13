@@ -17,7 +17,7 @@ export interface Machine {
   modelName: string;
   shortDesc: string;
   operationalSummary: string;
-  imageUrl: string;
+  imageUrl: any;
   specs: MachineSpec;
   isFeatured?: boolean;
 }
@@ -26,12 +26,12 @@ export const MACHINES_DATA: Machine[] = [
   {
     id: 'excavadoras-390',
     slug: 'excavadoras',
-    categoryTitle: 'EXCAVADORAS',
+    categoryTitle: 'EXCAVADORA',
     categoryTag: 'EXCAVACIÓN PESADA',
     modelName: 'Cat 390F L',
     shortDesc: 'Excavadora hidráulica de gran tamaño diseñada para máximo rendimiento en minería y obras de gran escala.',
     operationalSummary: 'Diseñada para resistir las condiciones mineras y de canteras más exigentes. La Cat 390F L ofrece una durabilidad excepcional del bastidor inferior y superior, sistemas hidráulicos inteligentes para ciclos de excavación ultra rápidos y una eficiencia de combustible optimizada por tonelada cargada.',
-    imageUrl: 'https://images.unsplash.com/photo-1579412690850-bd41cd0af397?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: require('../../assets/images/cat-390f.png'),
     isFeatured: true,
     specs: {
       powerModule: 'Cat C18 ACERT',
@@ -46,13 +46,13 @@ export const MACHINES_DATA: Machine[] = [
   },
   {
     id: 'cargadores-988k',
-    slug: 'cargadores-frontales',
-    categoryTitle: 'CARGADORES FRONTALES',
+    slug: 'cargador-frontal',
+    categoryTitle: 'CARGADOR FRONTAL',
     categoryTag: 'CARGA Y MOVIMIENTO',
     modelName: 'Cat 988K',
     shortDesc: 'Cargadores de ruedas de alto rendimiento diseñados para acoplarse con camiones de acarreo pesados.',
     operationalSummary: 'El cargador frontal Cat 988K combina la durabilidad legendaria con sistemas de control electrónico de precisión. Su motor diésel C18 ACERT y convertidor de par con embrague de rodete entregan empuje extremo y capacidades de levante superiores en frentes de minería y plantas de agregados.',
-    imageUrl: 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: require('../../assets/images/cat-988k.png'),
     specs: {
       powerModule: 'Cat C18 ACERT',
       powerModuleDesc: 'Bloque diésel industrial de alta cilindrada.',
@@ -66,13 +66,13 @@ export const MACHINES_DATA: Machine[] = [
   },
   {
     id: 'motoniveladoras-14m',
-    slug: 'motoniveladoras',
-    categoryTitle: 'MOTONIVELADORAS',
+    slug: 'motoniveladora',
+    categoryTitle: 'MOTONIVELADORA',
     categoryTag: 'NIVELACIÓN DE PRECISIÓN',
     modelName: 'Cat 14M',
     shortDesc: 'Equipo de nivelación y clasificación de precisión para la construcción de pistas y acarreo.',
     operationalSummary: 'La motoniveladora Cat 14M establece el estándar en la preparación y mantenimiento de vías de acarreo en minas a tajo abierto. Cuenta con controles por palanca universal (joysticks) revolucionarios, tracción total seleccionable y un vertedero de alta resistencia para movimiento de material consistente.',
-    imageUrl: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: require('../../assets/images/cat-14m.png'),
     specs: {
       powerModule: 'Cat C9.3 ACERT',
       powerModuleDesc: 'Motor Diésel de Nivelación Eficiente.',
@@ -87,12 +87,12 @@ export const MACHINES_DATA: Machine[] = [
   {
     id: 'camiones-797f',
     slug: 'camiones-mineros',
-    categoryTitle: 'CAMIONES MINEROS',
+    categoryTitle: 'CAMIÓN MINEROS',
     categoryTag: 'TRANSPORTE PESADO',
     modelName: 'Cat 797F',
     shortDesc: 'Camiones de acarreo de clase ultra que ofrecen la mayor capacidad de carga y menor costo por tonelada.',
     operationalSummary: 'Diseñado para las aplicaciones de minería más exigentes del mundo, el modelo 797F es el camión de mando mecánico líder en la industria. Ya sea transportando cobre, carbón, oro, mineral de hierro o escombros, este equipo proporciona el costo por tonelada más bajo de su clase.\n\nSu chasis de sección en caja, fundiciones de acero robustas y suspensión integral están diseñados para resistir las tensiones torsionales de los caminos de acarreo irregulares y extremos. El sistema de frenos refrigerados por aceite en las cuatro ruedas garantiza un control superior y un rendimiento constante.',
-    imageUrl: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: require('../../assets/images/cat-797f.png'),
     specs: {
       powerModule: 'Cat C175-20',
       powerModuleDesc: 'Bloque de Motor Diésel Quad-Turbo.',
