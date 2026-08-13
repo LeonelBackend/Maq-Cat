@@ -11,6 +11,7 @@
       "icon": "./assets/expo.icon"
     },
     "android": {
+      "package": "com.maqcat.app",
       "adaptiveIcon": {
         "backgroundColor": "#0D0D0F",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -36,6 +37,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4df11139-fcfd-440a-92c6-b669d96e4b68"
+      }
+    },
+    "owner": "leonelmunoz97"
   }
 }

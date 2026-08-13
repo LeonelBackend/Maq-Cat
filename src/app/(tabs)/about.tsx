@@ -29,11 +29,6 @@ export default function AboutScreen() {
           </View>
           <Text style={styles.brandTitle}>MAQ-CAT PLATAFORMA</Text>
           <Text style={styles.brandSubtitle}>GESTIÓN & CONSULTA DE MAQUINARIA PESADA</Text>
-          
-          <View style={styles.statusPill}>
-            <View style={styles.greenDot} />
-            <Text style={styles.statusPillText}>SISTEMA EN LÍNEA // OFFLINE READY</Text>
-          </View>
         </View>
 
         {/* Card: Acerca de la App */}
@@ -117,31 +112,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '800',
     letterSpacing: 1.5,
-    marginBottom: 16,
-    textAlign: 'center',
-  },
-  statusPill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#0A0A0C',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: Colors.cardBorderHighlight,
-  },
-  greenDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: Colors.statusGreen,
-    marginRight: 8,
-  },
-  statusPillText: {
-    color: Colors.textSecondary,
-    fontSize: 10,
-    fontWeight: '700',
-    letterSpacing: 1,
+    marginBottom: 0,
     textAlign: 'center',
   },
   infoCard: {
